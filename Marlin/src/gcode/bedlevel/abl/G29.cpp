@@ -469,7 +469,6 @@ G29_TYPE GcodeSuite::G29() {
             #endif
           );
         #endif
-
       #endif
     }
 
@@ -751,7 +750,6 @@ G29_TYPE GcodeSuite::G29() {
 
             const float z = abl.measured_z + abl.Z_offset;
             abl.z_values[abl.meshCount.x][abl.meshCount.y] = z;
-
             #if ENABLED(RTS_AVAILABLE)
               if((showcount++) < GRID_MAX_POINTS_X * GRID_MAX_POINTS_Y)
               {
@@ -813,9 +811,10 @@ G29_TYPE GcodeSuite::G29() {
               #endif
 
               if(showcount>=(GRID_MAX_POINTS_X * GRID_MAX_POINTS_Y)) showcount = 0;
-            #endif  
+            #endif
 
             TERN_(EXTENSIBLE_UI, ExtUI::onMeshUpdate(abl.meshCount, z));
+
           #endif
 
           abl.reenable = false; // Don't re-enable after modifying the mesh

@@ -96,21 +96,21 @@ void MKS_pause_print_move() {
     line_to_current_position(MMM_TO_MMS(1200));
     current_position.e = olde;
     planner.set_e_position_mm(olde);
-    #endif
+  #endif
 
-    destination.z = _MIN(current_position.z + mks_park_pos.z, Z_MAX_POS);
-    prepare_internal_move_to_destination(park_speed_z);
+  destination.z = _MIN(current_position.z + mks_park_pos.z, Z_MAX_POS);
+  prepare_internal_move_to_destination(park_speed_z);
 
-    destination.set(X_MIN_POS + mks_park_pos.x, Y_MIN_POS + mks_park_pos.y);
-    prepare_internal_move_to_destination(park_speed_xy);
+  destination.set(X_MIN_POS + mks_park_pos.x, Y_MIN_POS + mks_park_pos.y);
+  prepare_internal_move_to_destination(park_speed_xy);
 
-    #if ENABLED(RTS_AVAILABLE)
-      planner.synchronize();
-      current_position.e += 2;
-      line_to_current_position(MMM_TO_MMS(200));
-      current_position.e = olde;
-      planner.set_e_position_mm(olde);
-    #endif
+  #if ENABLED(RTS_AVAILABLE)
+    planner.synchronize();
+    current_position.e += 2;
+    line_to_current_position(MMM_TO_MMS(200));
+    current_position.e = olde;
+    planner.set_e_position_mm(olde);
+  #endif
 }
 
 void MKS_resume_print_move() {
@@ -134,7 +134,6 @@ void MKS_resume_print_move() {
   planner.synchronize();
 
   #if ENABLED(RTS_AVAILABLE)
-
     current_position.e += 3;
     //line_to_current_position(MMM_TO_MMS(2000));
     line_to_current_position(MMM_TO_MMS(200));
@@ -180,7 +179,7 @@ const uint16_t VPList_Main[] PROGMEM = {
   VP_XPos, VP_YPos, VP_ZPos,
   VP_Fan0_Percentage,
   VP_Feedrate_Percentage,
-  #if ENABLED(LCD_SET_PROGRESS_MANUALLY)
+  #if ENABLED(SET_PROGRESS_PERCENT)
     VP_PrintProgress_Percentage,
   #endif
   0x0000

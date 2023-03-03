@@ -93,6 +93,7 @@ extern "C" {
 // #define PIN_SPI_MISO            PA6
 // #define PIN_SPI_SCK             PA5
 
+
 // Timer Definitions
 #define TIMER_TONE              TIM2
 #define TIMER_SERVO             TIM5

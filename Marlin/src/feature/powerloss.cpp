@@ -172,7 +172,7 @@ void PrintJobRecovery::save(const bool force/*=false*/, const float zraise/*=POW
 
   // Did Z change since the last call?
   #if ENABLED(RTS_AVAILABLE) 
-  //if(current_position.z > planner.z_fade_height)
+    //if(current_position.z > planner.z_fade_height)
   #endif
   {
     if (force
@@ -180,8 +180,8 @@ void PrintJobRecovery::save(const bool force/*=false*/, const float zraise/*=POW
         #if SAVE_INFO_INTERVAL_MS > 0       // Save if interval is elapsed
           || ELAPSED(ms, next_save_ms)
         #endif
-      // Save if Z is above the last-saved position by some minimum height
-      //|| current_position.z > info.current_position.z + POWER_LOSS_MIN_Z_CHANGE
+        // Save if Z is above the last-saved position by some minimum height
+        //|| current_position.z > info.current_position.z + POWER_LOSS_MIN_Z_CHANGE
         #if ENABLED(RTS_AVAILABLE)
           || (current_position[Z_AXIS] > (info.current_position.z + POWER_LOSS_MIN_Z_CHANGE))
         #else

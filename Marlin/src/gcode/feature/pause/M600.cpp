@@ -101,7 +101,7 @@ void GcodeSuite::M600() {
     #if ENABLED(DUAL_X_CARRIAGE)
       int8_t DXC_ext = target_extruder;
       if (!parser.seen_test('T')) {  // If no tool index is specified, M600 was (probably) sent in response to filament runout.
-                                    // In this case, for duplicating modes set DXC_ext to the extruder that ran out.
+                                   // In this case, for duplicating modes set DXC_ext to the extruder that ran out.
         #if MULTI_FILAMENT_SENSOR
           if (idex_is_duplicating())
             DXC_ext = (READ(FIL_RUNOUT2_PIN) == FIL_RUNOUT2_STATE) ? 1 : 0;
@@ -186,7 +186,6 @@ void GcodeSuite::M600() {
     #endif
 
     TERN_(MIXING_EXTRUDER, mixer.T(old_mixing_tool)); // Restore original mixing tool
-
   #endif
 }
 
